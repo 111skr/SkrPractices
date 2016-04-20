@@ -10,31 +10,48 @@ using System.Diagnostics;
 
 namespace WebApp.Tests.Concurrent
 {
+    #region data Class
+    internal abstract class AIncreaseObject
+    {
+        //用不用static都能产生期望的竞态条件效果，但是经过测试发现加static更容易发生
+        protected static int count = 0;
+
+        public abstract void Increase();
+
+        public virtual int Number { get { return count; } }
+    }
+
     /// <summary>
     /// 并发情况下被操作的数据类(查看一下IL代码分析Increase()方法是怎么实现的)
     /// </summary>
-    internal class IncreaseObject
+    internal class IncreaseObject : AIncreaseObject
     {
-        static int count = 0;
-
-        public void Increase()
+        public override void Increase()
         {
             count++;
         }
-
-        public int Number { get { return count; } }
     }
+
+    /// <summary>
+    /// 加锁的数据对象
+    /// </summary>
+    internal class IncreaseObjectWithInterlocked : AIncreaseObject
+    {
+        public override void Increase()
+        {
+            Interlocked.Increment(ref count);
+        }
+    } 
+    #endregion
 
     public class ThreadAndLock
     {
-        [Fact(DisplayName = "Task实现：不使用同步锁保护被操作数据进行多线程操作同一个对象数据时不一定会得到期望的结果")]
-        public void Tasks_do_increase_without_lock_should_get_wrong_result()
+        private AIncreaseObject DealOperationWithTask<D>(int threadCount = 10, int increaseTimes = 100)
+            where D : AIncreaseObject, new()
         {
-            IncreaseObject incOjb = new IncreaseObject();
+            AIncreaseObject incObj = new D();
 
-            int threadCount = 10,
-                increaseTimes = 100,
-                totalResult = threadCount * increaseTimes;
+            int totalResult = threadCount * increaseTimes;
 
             List<Task> taskList = new List<Task>();
 
@@ -42,9 +59,8 @@ namespace WebApp.Tests.Concurrent
             {
                 for (int i = 0; i < increaseTimes; i++)
                 {
-                    incOjb.Increase();
+                    incObj.Increase();
                 }
-
                 //Trace.WriteLine(string.Format("Task:[{2}] Thread:[{0}], result:{1};", Thread.CurrentThread.ManagedThreadId, incOjb.Number, Task.CurrentId));
             };
 
@@ -57,10 +73,23 @@ namespace WebApp.Tests.Concurrent
                 taskList.Add(t);
             }
 
-
             Task.WaitAll(taskList.ToArray());
 
-            incOjb.Number.ShouldBe<Int32>(totalResult);
+            return incObj;
+        }
+
+        #region no lock opertaions
+
+        [Fact(DisplayName = "Task实现：不使用同步锁保护被操作数据进行多线程操作同一个对象数据时不一定会得到期望的结果")]
+        public void Tasks_do_increase_without_lock_should_get_wrong_result()
+        {
+            int threadCount = 10,
+                increaseTimes = 100,
+                totalResult = threadCount * increaseTimes;
+
+            AIncreaseObject incObj = DealOperationWithTask<IncreaseObject>(threadCount, increaseTimes);
+
+            incObj.Number.ShouldBe<Int32>(totalResult);
         }
 
         [Fact(DisplayName = "Thread实现：不使用同步锁保护被操作数据进行多线程操作同一个对象数据时不一定会得到期望的结果")]
@@ -92,10 +121,28 @@ namespace WebApp.Tests.Concurrent
 
                 taskList.Add(t);
             }
-            
-            taskList.ForEach(t=>t.Join());
+
+            taskList.ForEach(t => t.Join());
 
             incOjb.Number.ShouldBe<Int32>(totalResult);
         }
+
+        #endregion
+
+        #region interlocked operations
+
+        [Fact(DisplayName = "Task实现：多线程操作拥有Interlocked锁的数据")]
+        public void Tasks_do_increase_with_Interlocked_should_get_right_result()
+        {
+            int threadCount = 10,
+                increaseTimes = 100,
+                totalResult = threadCount * increaseTimes;
+
+            AIncreaseObject incObj = DealOperationWithTask<IncreaseObjectWithInterlocked>(threadCount, increaseTimes);
+
+            incObj.Number.ShouldBe<Int32>(totalResult);
+        }
+
+        #endregion
     }
 }
