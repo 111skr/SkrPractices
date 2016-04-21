@@ -7,6 +7,7 @@ using Xunit;
 using Shouldly;
 using System.Threading;
 using System.Diagnostics;
+using Xunit.Abstractions;
 
 namespace WebApp.Tests.Concurrent
 {
@@ -46,6 +47,12 @@ namespace WebApp.Tests.Concurrent
 
     public class ThreadAndLock
     {
+        private readonly ITestOutputHelper output;
+        public ThreadAndLock(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
         private AIncreaseObject DealOperationWithTask<D>(int threadCount = 10, int increaseTimes = 100)
             where D : AIncreaseObject, new()
         {
@@ -61,7 +68,7 @@ namespace WebApp.Tests.Concurrent
                 {
                     incObj.Increase();
                 }
-                //Trace.WriteLine(string.Format("Task:[{2}] Thread:[{0}], result:{1};", Thread.CurrentThread.ManagedThreadId, incOjb.Number, Task.CurrentId));
+                output.WriteLine(string.Format("Task:[{2}] Thread:[{0}], result:{1};", Thread.CurrentThread.ManagedThreadId, incObj.Number, Task.CurrentId));
             };
 
             for (int tIndex = 0; tIndex < threadCount; tIndex++)
@@ -110,7 +117,7 @@ namespace WebApp.Tests.Concurrent
                     incOjb.Increase();
                 }
 
-                //Trace.WriteLine(string.Format("Task:[{2}] Thread:[{0}], result:{1};", Thread.CurrentThread.ManagedThreadId, incOjb.Number, Task.CurrentId));
+                output.WriteLine(string.Format("Task:[{2}] Thread:[{0}], result:{1};", Thread.CurrentThread.ManagedThreadId, incOjb.Number, Task.CurrentId));
             };
 
             for (int tIndex = 0; tIndex < threadCount; tIndex++)
