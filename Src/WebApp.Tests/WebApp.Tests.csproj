@@ -114,6 +114,8 @@
     <Compile Include="Concurrent\PhilosopherEat.cs" />
     <Compile Include="Concurrent\ThreadAndLock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\SingletonTest.cs" />
+    <Compile Include="Singleton\SingletonImps.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
