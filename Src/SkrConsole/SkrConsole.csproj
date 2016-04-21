@@ -45,6 +45,7 @@
     <Compile Include="PhilosophersEat\APhilosopher.cs" />
     <Compile Include="PhilosophersEat\Chopsticks.cs" />
     <Compile Include="PhilosophersEat\Philosopher.cs" />
+    <Compile Include="PhilosophersEat\PhilosopherWithOrderChopstics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
