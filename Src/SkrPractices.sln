@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B801E93D-7817-4F58-9F80-25DCD620C9BE}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +15,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Tests", "WebApp.Tests\WebApp.Tests.csproj", "{E3960EBF-C6F3-46BD-9596-3F384AB10B5F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkrConsole", "SkrConsole\SkrConsole.csproj", "{0D3CE403-E6DD-4A5F-99AE-B8AF1AE79548}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMQ", "RabbitMQ", "{EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publisher.csproj", "{B99F7261-C5BB-4312-80F7-86DF10FF3250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "Subscriber\Subscriber.csproj", "{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService1", "WindowsService1\WindowsService1.csproj", "{39F8D300-EB3D-4E65-8A91-591399F5461C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,8 +42,25 @@ Global
 		{0D3CE403-E6DD-4A5F-99AE-B8AF1AE79548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D3CE403-E6DD-4A5F-99AE-B8AF1AE79548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D3CE403-E6DD-4A5F-99AE-B8AF1AE79548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B99F7261-C5BB-4312-80F7-86DF10FF3250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B99F7261-C5BB-4312-80F7-86DF10FF3250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B99F7261-C5BB-4312-80F7-86DF10FF3250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B99F7261-C5BB-4312-80F7-86DF10FF3250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B99F7261-C5BB-4312-80F7-86DF10FF3250} = {EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}
+		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87} = {EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}
+		{39F8D300-EB3D-4E65-8A91-591399F5461C} = {EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}
 	EndGlobalSection
 EndGlobal
