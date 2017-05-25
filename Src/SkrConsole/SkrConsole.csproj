@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCenter.cs" />
     <Compile Include="PhilosophersEat\APhilosopher.cs" />
     <Compile Include="PhilosophersEat\Chopsticks.cs" />
     <Compile Include="PhilosophersEat\Philosopher.cs" />

@@ -13,7 +13,7 @@ namespace Publisher
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register<ILogger>(c => LogManager.GetCurrentClassLogger()).SingleInstance();
+            builder.Register<ILogger>(c => LogManager.GetCurrentClassLogger());
 
             ushort heartBeat = 12000;
             builder.Register<IConnectionFactory>(c => new ConnectionFactory()

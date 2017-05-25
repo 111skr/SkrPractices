@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B801E93D-7817-4F58-9F80-25DCD620C9BE}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B801E9
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{7048EF49-3424-408D-81C6-F75A2589062C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Tests", "WebApp.Tests\WebApp.Tests.csproj", "{E3960EBF-C6F3-46BD-9596-3F384AB10B5F}"
 EndProject
@@ -22,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "Publisher\Publ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscriber", "Subscriber\Subscriber.csproj", "{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService1", "WindowsService1\WindowsService1.csproj", "{39F8D300-EB3D-4E65-8A91-591399F5461C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQ", "MQ\MQ.csproj", "{65324B5B-A8DA-41C5-8D6C-F44E64305575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7048EF49-3424-408D-81C6-F75A2589062C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7048EF49-3424-408D-81C6-F75A2589062C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7048EF49-3424-408D-81C6-F75A2589062C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7048EF49-3424-408D-81C6-F75A2589062C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3960EBF-C6F3-46BD-9596-3F384AB10B5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3960EBF-C6F3-46BD-9596-3F384AB10B5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3960EBF-C6F3-46BD-9596-3F384AB10B5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,10 +44,10 @@ Global
 		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39F8D300-EB3D-4E65-8A91-591399F5461C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65324B5B-A8DA-41C5-8D6C-F44E64305575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65324B5B-A8DA-41C5-8D6C-F44E64305575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65324B5B-A8DA-41C5-8D6C-F44E64305575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65324B5B-A8DA-41C5-8D6C-F44E64305575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +55,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B99F7261-C5BB-4312-80F7-86DF10FF3250} = {EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}
 		{E2EEE304-E1A7-4334-BFE3-F84FF2D34C87} = {EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}
-		{39F8D300-EB3D-4E65-8A91-591399F5461C} = {EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}
+		{65324B5B-A8DA-41C5-8D6C-F44E64305575} = {EFC89FCC-5AA2-47CC-BE04-7EF618F6FBF4}
 	EndGlobalSection
 EndGlobal

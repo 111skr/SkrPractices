@@ -33,18 +33,21 @@ namespace Publisher
                 var commandStr = string.Empty;
                 using (var channel = connection.CreateModel())
                 {
-                    string queueName = "q-hello",
-                        exchangeName = "ex_hello";
-
+                    string exchangeName = "ex_hello";
                     channel.ExchangeDeclare(exchangeName, "fanout", true, false, null);
 
-                    channel.QueueDeclare(queue: queueName,
-                                         durable: true,
-                                         exclusive: false,
-                                         autoDelete: false,
-                                         arguments: null);
+                    foreach (string queueName in new string[] { "q-hello", "q-hello2" })
+                    {
+                    
+                        channel.QueueDeclare(queue: queueName,
+                                             durable: true,
+                                             exclusive: false,
+                                             autoDelete: false,
+                                             arguments: null);
 
-                    channel.QueueBind(queueName, exchangeName, string.Empty);
+                        channel.QueueBind(queueName, exchangeName, string.Empty);
+
+                    }
 
                     while (commandStr != "q")
                     {
