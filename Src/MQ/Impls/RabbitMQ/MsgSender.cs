@@ -19,7 +19,7 @@ namespace MQ.Impls.RabbitMQ
         {
             msgSerializer.Serializer<string>(new MsgModel<string> { Module = ModuleEnum.User, Operation = OperationEnum.Register, Msg = "msg" });
 
-            channel.BasicPublish("","",null,)
+            //channel.BasicPublish("","",null,)
 
             return true;
         }
